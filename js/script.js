@@ -41,20 +41,45 @@ function createNewGame() {
 
 function createPlayGround(totalCells, cellsPerSide) {
 
+    let levelSelector = document.getElementById('difficulty');
+    let level = parseInt(levelSelector.value);
+    let cellsNumber; 
+
+    // Determinazione delle caselle per livello
+    switch(level) {
+        case 1: 
+            cellsNumber = 100; 
+            cellsPerSide = 10; 
+            break;
+
+        case 2: 
+            cellsNumber = 81; 
+            cellsPerSide = 9; 
+            break;
+
+        case 3: 
+            cellsNumber = 49; 
+            cellsPerSide = 7; 
+            break;
+        default: 
+            cellsNumber = 100; 
+            cellsPerSide = 10;
+    }
+
         // Ottiene il riferimento al contenitore della griglia
         const grid = document.getElementById('grid');
 
         // Dichiarazione della costante per il numero di bombe da visualizzare all'interno dell'array
         const bombsToShow = 16;
 
-        const bombs = generateBombsList(bombsToShow);
+        const bombs = generateBombsList(bombsToShow, cellsNumber);
         console.log(bombs);
 
         let points = 0; 
         let gameOver = false;
 
         // Definire un ciclo for per la realizzazione delle celle da 1 a 100
-        for (let i=0; i<totalCells; i++) {
+        for (let i=0; i<cellsNumber; i++) {
             // Creazione della singola cella
             let square = createCell(i+1, cellsPerSide);
             // Al click la cella cambierà di colore e la console emette il numero della cella
@@ -109,12 +134,12 @@ function createCell (num, numPerSide) {
 }
 
 // Funzione che genera un numero casualmente. Se il numero non è presente lo inserisce all'interno dell'array, altrimenti ne genera un altro
-function generateRandomNumbers (arrayBombs){
+function generateRandomNumbers (arrayBombs, totalCells){
     let checkNumber = false;
 
     let randomInt;
     while (!checkNumber) {
-        randomInt = Math.floor(Math.random() * 100 + 1);
+        randomInt = Math.floor(Math.random() * totalCells + 1);
         if(!arrayBombs.includes(randomInt)){
             checkNumber = true;
         }
@@ -123,11 +148,11 @@ function generateRandomNumbers (arrayBombs){
 }
 
 // Definizione della funzione che genera le singole bombe
-function generateBombsList (numberOfBombs){
+function generateBombsList (numberOfBombs, totalCells){
     let bombs = [];
     // Inserire all'interno dell'array 'bombs' un numero casuale
     for (let i=0 ; i < numberOfBombs ; i++){
-        let bombNum = generateRandomNumbers(bombs);
+        let bombNum = generateRandomNumbers(bombs, totalCells);
         bombs.push(bombNum);
     }
     return bombs;
