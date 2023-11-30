@@ -33,17 +33,15 @@ body {
 }
 
 main {
-    height: 900px;
+    height: 1000px;
 }
 
 #grid {
-    width: 900px;
+    width: 1000px;
     flex-wrap: wrap;
 }
 
 .square {
-    width: 100px;
-    height: 100px;
     background-color: #7FFFD4;
     border: 1px solid #000;
     display: flex;
@@ -53,6 +51,12 @@ main {
 
 .clicked {
     background-color: lightskyblue;
+    color: #fff;
+}
+
+.clicked-bombs {
+    background-color: red;
+    color: #fff;
 }
 
 .square span {
@@ -60,6 +64,14 @@ main {
 }
 
 .square.clicked span {
+    opacity: 1;
+}
+
+.square span {
+    opacity: 0;
+}
+
+.square.clicked-bombs span {
     opacity: 1;
 }
 
