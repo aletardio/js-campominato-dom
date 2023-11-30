@@ -84,5 +84,19 @@ function createCell (num, numPerSide) {
 
 }
 
+// Funzione che genera un numero casualmente. Se il numero non è presente lo inserisce all'interno dell'array, altrimenti ne genera un altro
+function generateRandomNumbers (arrayBombs){
+    let checkNumber = false;
+
+    while (!checkNumber) {
+        let randomInt = Math.floor(Math.random * 100 + 1);
+
+        if(!arrayBombs.includes(randomInt)){
+            checkNumber = true;
+        }
+    }
+    return randomInt;
+}
+
 
 
