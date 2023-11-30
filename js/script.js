@@ -69,7 +69,8 @@ function createPlayGround(totalCells, cellsPerSide) {
                     }
                     else {
                         this.classList.add('clicked-bombs');
-                        gameOver = true; 
+                        document.getElementById('gameOver').innerText = 'Hai perso';
+                        grid.innerText = '';
                     }
                 }
 
