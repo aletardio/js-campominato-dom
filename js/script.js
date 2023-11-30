@@ -98,5 +98,15 @@ function generateRandomNumbers (arrayBombs){
     return randomInt;
 }
 
+// Definizione della funzione che genera le singole bombe
+function generateBombsList (numberOfBombs){
+    let bombs = [];
+    // Inserire all'interno drll'array 'bombs' un numero casuale
+    for (let i=0 ; i < numberOfBombs ; i++){
+        let bombNum = generateRandomNumbers(bombs);
+        bombs.push(bombNum);
+    }
+}
+
 
 
