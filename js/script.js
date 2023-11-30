@@ -51,6 +51,7 @@ function createPlayGround(totalCells, cellsPerSide) {
         console.log(bombs);
 
         let points = 0; 
+        let gameOver = false;
 
         // Definire un ciclo for per la realizzazione delle celle da 1 a 100
         for (let i=0; i<totalCells; i++) {
@@ -58,16 +59,21 @@ function createPlayGround(totalCells, cellsPerSide) {
             let square = createCell(i+1, cellsPerSide);
             // Al click la cella cambierà di colore e la console emette il numero della cella
             square.addEventListener('click', function(){
-
-                if(!bombs.includes(i)){
-                    this.classList.add('clicked');
-                    points++;
-
-                    document.getElementById('score').innerText = `Il tuo punteggio è pari a ${points}`;
+                // Verifica se l'utente ha perso
+                if(!gameOver){
+                    if(!bombs.includes(i)){
+                        this.classList.add('clicked');
+                        points++;
+    
+                        document.getElementById('score').innerText = `Il tuo punteggio è pari a ${points}`;
+                    }
+                    else {
+                        this.classList.add('clicked-bombs');
+                        gameOver = true; 
+                    }
                 }
-                else {
-                    this.classList.add('clicked-bombs');
-                }
+
+
             })
             // Appendo la cella alla griglia
             grid.appendChild(square);
