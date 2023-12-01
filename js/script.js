@@ -62,8 +62,8 @@ function createPlayGround(totalCells, cellsPerSide) {
             cellsPerSide = 7; 
             break;
         default: 
-            cellsNumber = 100; 
-            cellsPerSide = 10;
+            alert('Scegli una livello di difficoltà');
+            return; 
     }
 
         // Ottiene il riferimento al contenitore della griglia
